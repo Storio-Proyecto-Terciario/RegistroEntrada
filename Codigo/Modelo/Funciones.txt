@@ -1,0 +1,1 @@
+Declarcion de clases modelo y constructor
