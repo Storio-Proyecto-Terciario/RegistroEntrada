@@ -1,0 +1,2 @@
+Intrmediario entre modelo y vista
+Validacion
