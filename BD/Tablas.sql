@@ -1,6 +1,6 @@
-create database Registro2;
+create database Registro;
 
-use Registro2;
+use Registro;
 
 
 create table Usuarios(
@@ -18,6 +18,7 @@ UsuarioCI INT PRIMARY KEY,
 AdministrativoJefe INT,
 AdministrativoContra VARCHAR(255) NOT NULL,
 AdministrativoContacto VARCHAR(25) NOT NULL,
+AdministrativoExiste BIT default(1) NOT NULL,
 CONSTRAINT FK_AdminitrativoID FOREIGN KEY (UsuarioCI) REFERENCES Usuarios(UsuarioCI),
 CONSTRAINT FK_AdminitrativoJefeID FOREIGN KEY (AdministrativoJefe) REFERENCES Usuarios(UsuarioCI)
 );

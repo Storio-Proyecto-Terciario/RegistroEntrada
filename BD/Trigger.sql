@@ -1,3 +1,4 @@
+use Registro;
 -- Crear un desencadenador (trigger) para ajustar UsuarioCI a NULL cuando sea necesario
 CREATE TRIGGER SetUsuarioCINull
 ON Registro
@@ -13,3 +14,4 @@ BEGIN
         WHERE i.RegistroInvitado = 1;
     END
 END;
+
