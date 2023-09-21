@@ -1,3 +1,4 @@
+USE Registro;
 CREATE VIEW VistaRegistro AS
 SELECT
     U.UsuarioCI,

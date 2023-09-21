@@ -1,4 +1,5 @@
-  INSERT INTO Usuarios (UsuarioCI, UsuarioNombre, UsuarioApellido, UsuarioTipo, UsuarioExiste)
+  use Registro;
+INSERT INTO Usuarios (UsuarioCI, UsuarioNombre, UsuarioApellido, UsuarioTipo, UsuarioExiste)
 VALUES
     (1, 'Juan', 'Pérez', 'Alumno', 1),
     (2, 'María', 'López', 'Profesor', 1),
@@ -37,8 +38,8 @@ VALUES
     (4, 6, '2023-09-20', '14:15:00'),
     (5, 7, '2023-09-20', '15:30:00'),
     (6, 8, '2023-09-20', '16:45:00'),
-    (7, 10, '2023-09-20', '18:00:00');
-	(7, 4, '2023-09-20', '18:00:00');
-	(7, 5, '2023-09-20', '18:00:00');
-	(7, 9, '2023-09-20', '18:00:00');
+    (7, 10, '2023-09-20', '18:00:00'),
+	(NULL, 4, '2023-09-20', '18:00:00'),
+	(NULL, 5, '2023-09-20', '18:00:00'),
+	(NULL, 9, '2023-09-20', '18:00:00');
 	
