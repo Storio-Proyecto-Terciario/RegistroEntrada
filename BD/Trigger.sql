@@ -1,4 +1,4 @@
-use Registro;
+use Proyecto;
 -- Crear un desencadenador (trigger) para ajustar UsuarioCI a NULL cuando sea necesario
 CREATE TRIGGER SetUsuarioCINull
 ON Registro
@@ -14,4 +14,21 @@ BEGIN
         WHERE i.RegistroInvitado = 1;
     END
 END;
+
+-- mysql ver
+
+DELIMITER //
+CREATE TRIGGER SetUsuarioCINull
+AFTER UPDATE ON Registro FOR EACH ROW
+BEGIN
+    IF NEW.RegistroInvitado <> OLD.RegistroInvitado THEN
+        UPDATE Realiza r
+        JOIN Registro i ON r.RegistroID = i.RegistroID
+        SET r.UsuarioCI = NULL
+        WHERE i.RegistroInvitado = 1;
+    END IF;
+END;
+//
+DELIMITER ;
+
 
