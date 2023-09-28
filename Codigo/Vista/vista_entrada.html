@@ -4,12 +4,13 @@
 
 <section class="marco">
     <h1 class="titulo">Registro</h1>
-    <form action="" method="post">
+    <form action="Controlador/conlogin.php" method="post">
         <label for="ci">Cedula:</label>
         <p id="cid"></p>
         <input type="number" name="cedula" id="ci" min="0" class="formInput" onkeydown="desabilitarFlechas('ci')"
           onkeyup="codVer('ci', 'cid');" onscroll="noScroll('ci')" maxlength="7" required>
 
+          <input type="hidden" name="t" value="0">
         <button type="submit" class="boton1 enviar">Listo</button>
 
         <button type="reset" class="boton1 reset">Reset</button>
