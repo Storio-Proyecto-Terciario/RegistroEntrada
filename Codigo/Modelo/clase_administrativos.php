@@ -66,7 +66,7 @@ class administrativos extends usuarios
 
     function validarAdministrativo($ci, $con)
     {
-        $sql = "SELECT UsuarioCI FROM Administrativos WHERE UsuarioCI =$ci and AdministrativoContra='$con'"; //exec ValidarAdministrativo @id =$ci;
+        $sql = "SELECT UsuarioCI FROM Administrativos WHERE UsuarioCI =$ci and AdministrativoContra='$con' and AdministrativoExiste=1;"; //exec ValidarAdministrativo @id =$ci;
         if ($resultado = $this->db->query($sql)) {
             // Cuenta el numero de filas que dio la consulta.
             $nfilas = mysqli_num_rows($resultado);
@@ -74,7 +74,6 @@ class administrativos extends usuarios
 
             // Valida si el usuario existe.
             if ($nfilas > 0) {
-                echo "asd";
                 return true;
             } else {
                 return false;
