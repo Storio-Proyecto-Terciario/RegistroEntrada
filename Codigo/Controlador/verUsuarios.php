@@ -1,5 +1,5 @@
 <?php
-
+require_once('../Modelo/clase_usuarios.php');
 require_once('../Vista/vista_tabla_usuario.php');
 
 if (empty($_GET['u'])) {
@@ -9,8 +9,8 @@ if (empty($_GET['u'])) {
 $u = $_GET['u'];
 switch($u){
     case 1:
-        require_once('../Modelo/clase_usuarios.php');
-        tablaUsuarios($MulArray);
+        $usuarios = new usuarios();
+        tablaUsuarios($usuarios->datosUsuarios());
         
     break;
     case 2:
