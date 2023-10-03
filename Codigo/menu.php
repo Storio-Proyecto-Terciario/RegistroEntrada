@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+$ci = $_SESSION['ci'];
+$nombre = $_SESSION['nombre'];
+$apellido = $_SESSION['apellido'];
+$contacto = $_SESSION['contacto'];
+$jefe = $_SESSION['jefe'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +23,7 @@
 
     
     <?php
-    session_start();
+
 
     echo"<h1>El usuariio actual es ".$_SESSION['ci']."</h1>";
 

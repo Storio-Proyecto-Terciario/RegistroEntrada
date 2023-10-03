@@ -1,0 +1,10 @@
+
+
+Se busca que los admin puedan ver a los usuarios y los admin debajo de ellos.
+    Se resulve con una consulta sql q pida todas las filas y lugo ponerlas en una tabla y mostrarlas.
+
+Tambien se debe de tener en cuenta que la tablas pueda tener mas de 1000 filas y verlas todas de una vez 
+resultaris imposible por lo que se deberia de mostrale al usuario una cantidad establecida de filas.
+La pregunta radica en el echo de si debemos consultar todas las filas a la vez y mostrarlas de apoco al usuario o 
+realizar consultas de manera que vallan tomando trozo de la tabla y enviando al php?
+otra prguanta es como se deberian de mostrar las tablas refiriendose al back end?

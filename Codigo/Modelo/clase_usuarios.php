@@ -151,4 +151,20 @@ class usuarios
             die('Error SQL: ' . $this->db->error);
         }
     }
+
+    // Ver usuarios
+
+    function datosUsuarios(){
+        $sql="SELECT  UsuarioCI,  CONCAT(UsuarioNombre, ' ', UsuarioApellido) AS NombreCompleto, UsuarioTipo FROM usuarios WHERE  UsuarioExiste=1;";
+
+        if ($resultado = $this->db->query($sql)) {
+            while ($fila = $resultado->fetch_assoc()) {
+                $resultados[] = $fila;
+            }
+            $resultado->free();
+            return $resultados;
+        } else {
+            die('Error SQL: ' . $this->db->error);
+        }
+    }
 }
