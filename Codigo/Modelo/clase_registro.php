@@ -94,6 +94,7 @@ class registro
     public function masRegistro($ci, $des)
     {
         $sql = "call insertarRegistro($ci,'$des')";
+        echo"<script>alert('La consulta es $sql');</script>";
         if(!$this->db->query($sql)){
             die('Error SQL: ' . $this->db->error);
         }

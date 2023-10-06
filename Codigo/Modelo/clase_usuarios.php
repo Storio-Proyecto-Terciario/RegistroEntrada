@@ -94,7 +94,7 @@ class usuarios
     {
         $sql = "call ValidarUsuario('$ci');"; //exec ValidarUsuario @id =$ci;
         echo $sql;
-        exit;
+        
         if ($resultado = $this->db->query($sql)) {
             // Cuenta el numero de filas que dio la consulta.
             $nfilas = mysqli_num_rows($resultado);

@@ -6,11 +6,11 @@ session_start();
 
 if (empty($_POST['cedula'])) { // Valida si esta vacia
     echo "<script>alert('No se pudo resolver la cedula');</script>";
-    header('location:../login.php');
+    //header('location:../login.php');
 }
 if (empty($_POST['t'])) { // Valida si esta vacia
     echo "<script>alert('No se pudo resolver el tipo de entrada');</script>";
-    header('location:../login.php');
+    //header('location:../login.php');
 }
 
 if (true) {
@@ -27,18 +27,22 @@ if (true) {
             } else {
                 $des = "El usuario no esta registrado, 
                 es categorizado como invitado cedula:$ci"; // Comentario si no existe el usuario
+                echo "<script>alert('El usuario no esta registrado');</script>";
             }
             if (isset($des)) { // validar si $des esta definida
                 $re = new registro();
                 $re->masRegistro($ci, $des); // Cargar registro
-                header('location:../entrada.php');
+                echo "<script>alert('Se registro correctamente');</script>";
+                //header('location:../entrada.php');
                 unset($des);
                 exit;
             } else {
+
                 $error[] = "No se pudo resolver el tipo de entrada";
                 error_log("Error de validacion:: conLogin.php - 
                 Hubo un error con el usuario $ci", 3, "../error.log");
                 header('location:../error.php');
+
                 exit;
             }
 
