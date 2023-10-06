@@ -133,4 +133,22 @@ class administrativos extends usuarios
             die('Error SQL: ' . $this->db->error);
         }
     }
-}
+
+    public function DatosAdministrativo($terminaTabla, $empiezaTabla){
+    
+        $sql="SELECT UsuarioCI, CONCAT(UsuarioNombre, ' ', UsuarioApellido) AS NombreCompleto, AdministrativoContacto 
+        FROM vistausuarioadministrativo 
+        WHERE AdministrativoExiste =1
+        LIMIT $terminaTabla  OFFSET $empiezaTabla;";
+
+        if ($resultado = $this->db->query($sql)) {
+            while ($fila = $resultado->fetch_assoc()) {
+                $resultados[] = $fila;
+            }
+            $resultado->free();
+            return $resultados;
+        } else {
+            die('Error SQL: ' . $this->db->error);
+        }
+    }
+    }

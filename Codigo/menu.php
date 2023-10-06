@@ -1,11 +1,16 @@
 <?php
     session_start();
-
+if (empty($_SESSION['ci'])) {
+    header('location:login.php');
+    exit;
+}
 $ci = $_SESSION['ci'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $contacto = $_SESSION['contacto'];
 $jefe = $_SESSION['jefe'];
+
+
 
 ?>
 

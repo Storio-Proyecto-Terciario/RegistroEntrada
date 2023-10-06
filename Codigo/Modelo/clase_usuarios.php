@@ -92,7 +92,9 @@ class usuarios
 
     function validarUsuario($ci)
     {
-        $sql = "call ValidarUsuario($ci);"; //exec ValidarUsuario @id =$ci;
+        $sql = "call ValidarUsuario('$ci');"; //exec ValidarUsuario @id =$ci;
+        echo $sql;
+        exit;
         if ($resultado = $this->db->query($sql)) {
             // Cuenta el numero de filas que dio la consulta.
             $nfilas = mysqli_num_rows($resultado);
@@ -106,6 +108,7 @@ class usuarios
         }else{
             die('Error SQL: ' . $this->db->error);
             echo"validarUsuario";
+            echo"<script>alert('Error SQL: ' . $this->db->error);</script>";
         
         }
     }
@@ -154,8 +157,13 @@ class usuarios
 
     // Ver usuarios
 
-    function datosUsuarios(){
-        $sql="SELECT  UsuarioCI,  CONCAT(UsuarioNombre, ' ', UsuarioApellido) AS NombreCompleto, UsuarioTipo FROM usuarios WHERE  UsuarioExiste=1;";
+    function datosUsuarios($terminaTabla, $empiezaTabla){
+
+
+        $sql="SELECT UsuarioCI, CONCAT(UsuarioNombre, ' ', UsuarioApellido) AS NombreCompleto, UsuarioTipo 
+        FROM vistausuarios 
+        WHERE UsuarioExiste=1
+        LIMIT $terminaTabla  OFFSET $empiezaTabla;";
 
         if ($resultado = $this->db->query($sql)) {
             while ($fila = $resultado->fetch_assoc()) {

@@ -1,15 +1,14 @@
 <!--  <link rel="stylesheet" href="Css/navegador.css">  -->
 
-
-
-
-
 <?php
 
-function nav($n)
+
+function nav($n, $nombre)
 {
 
+
     switch ($n) {
+
         case 1:
 ?>
 
@@ -26,13 +25,13 @@ function nav($n)
                         <a href="usuarios.php?u=2">Administrativo</a>
                     </div>
                 </div>
-                <a href="#about">About</a>
+                <a href="#about"><?php echo $nombre; ?></a>
                 <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navResponsive()">&#9776;</a>
             </nav>
 
 
         <?php
-        break;
+            break;
 
         default:
         ?>

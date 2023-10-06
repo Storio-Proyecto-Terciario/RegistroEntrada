@@ -5,19 +5,18 @@ require_once('../Modelo/clase_registro.php');
 session_start();
 
 if (empty($_POST['cedula'])) { // Valida si esta vacia
-    $error[] = "El campo de cedual esta  vacio";
-    error_log("Error de validacion:: conLogin.php - 
-El campo de cedual esta  vacio", 3, "../error.log");
+    echo "<script>alert('No se pudo resolver la cedula');</script>";
+    header('location:../login.php');
 }
 if (empty($_POST['t'])) { // Valida si esta vacia
-    $error[] = "No se pudo resolver el tipo de entrada";
-    error_log("Error de validacion:: conLogin.php - 
-    No se pudo resolver el tipo de entrada", 3, "../error.log");
+    echo "<script>alert('No se pudo resolver el tipo de entrada');</script>";
+    header('location:../login.php');
 }
 
-if (!empty($error)) {
+if (true) {
 
     $ci = $_POST['cedula'];
+    echo "<script>alert('La cedula es $ci');</script>";
     $tipo = $_POST['t'];
     switch ($tipo) {
         case 0:
@@ -47,12 +46,11 @@ if (!empty($error)) {
         case 1:
             $administrativo = new administrativos();
             if (empty($_POST['con'])) {
-                $error[] = "No se pudo resolver la contraseña";
-                error_log("Error de validacion:: conLogin.php - 
-                No se pudo resolver la contraseña", 3, "../error.log");
-                header('location:../error?i=1.php');
+                echo "<script>alert('No se pudo resolver la contraseña');</script>";
+                header('location:../login.php');
                 exit;
             }
+            echo "<script>alert('La ci es $ci');</script>";
             if ($administrativo->validarUsuario($ci)) { // Valida que el usuario exista
                 if ($administrativo->validarAdministrativo($ci, $_POST['con'])) { // Validar si administrativo existe
 
@@ -67,14 +65,10 @@ if (!empty($error)) {
                     header('location:../menu.php');
                     exit;
                 } else {
-                    $error[] = "No se pudo validar si el administrativo existe";
-                    error_log("Error de validacion:: conLogin.php - 
-                    No se pudo validar si el administrativo existe $ci", 3, "../error.log");
+                    echo "<script>alert('La contraseña es incorrecta');</script>";
                 }
             } else {
-                $error[] = "No se pudo validar si el administrativo usuario existe";
-                error_log("Error de validacion:: conLogin.php - 
-                No se pudo validar si el administrativo usuario existe $ci", 3, "../error.log");
+                echo "<script>alert('El usuario no esta registrado');</script>";
             }
 
             break;

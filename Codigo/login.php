@@ -12,7 +12,8 @@
 
 <?php
 
-require_once('Vista/vista_navegador.html');
+require_once('Vista/vista_navegador.php');
+nav(null,null);
 
 require_once('Vista/vista_login.html');
 

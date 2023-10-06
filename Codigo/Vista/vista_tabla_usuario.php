@@ -1,9 +1,8 @@
-
-
 <?php
 //<link rel="stylesheet" href="Css/tablas.css">
-function tablaUsuarios($MulArray)
+function tablaUsuarios($MulArray, $indice)
 {
+
 ?>
     <table id="customers">
         <tr>
@@ -21,14 +20,15 @@ function tablaUsuarios($MulArray)
         echo "<td class='icono'><img src='Img/Iconos/stop.png' alt=''></td>";
         echo "</tr>";
     }
-    echo "</table>
- ";
+    echo "</table>";
+    echo "<button class='boton' onclick='loadDoc(\"Controler/verUsuarios.php?u=1&index=" . ($indice - 1) . "\")'>Anterior</button>";
+    echo "<button class='boton' onclick='loadDoc(\"Controler/verUsuarios.php?u=1&index=" . ($indice + 1) . "\")'>Siguiente</button>";
 }
     ?>
 
 
 
-<?php
+    <?php
 /*
 
 // Obtener el índice del array actual desde la URL
