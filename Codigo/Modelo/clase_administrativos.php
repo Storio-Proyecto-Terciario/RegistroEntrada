@@ -88,7 +88,7 @@ class administrativos extends usuarios
     function buscarDatosAdministrativo($ci)
     {
         $sql = "SELECT *
-        FROM vistausuariosadministrativos
+        FROM vistausuarioadministrativo
         WHERE UsuarioCI = '$ci';";
 
         if ($rel = $this->db->query($sql)) {
