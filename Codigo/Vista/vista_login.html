@@ -13,7 +13,7 @@
         <p id="cid"></p>
         <input type="number" name="cedula" id="ci" min="0" class="formInput" onkeydown="desabilitarFlechas('ci')"
           onkeyup="codVer('ci', 'cid');" onscroll="noScroll('ci')" maxlength="7" required>
-
+       
         <label for="contra">Contraseña:</label>
         <input type="password" name="con" id="contra">
 
@@ -24,7 +24,9 @@
        
         <button type="reset" class="boton1 reset">Reset</button>
 
-        <a href="../entrada.php">Entrada</a>
+        <button  class="boton1 reset" onclick="window.location.replace('/entrada.php')">Entrada</button>
+
+        
     </form>
 </section>
 

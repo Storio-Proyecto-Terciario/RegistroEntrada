@@ -18,19 +18,26 @@ function tiene_numeros_key(id) {
 
 function codVer(id, id2) {
     const ci = '2987634';
-    const val = document.getElementById(id).value;
+    const val = document.getElementById(id);
     let iden = 0;
     let identificador = null;
     let mayor;
+    let val2=val.value;
     
-    if(val.length>7){
-        val2 = val.substring(0, val.length - 1);
-        document.getElementById(id).value=val2;
-    }
+    if(document.getElementById(id).value.length>7){
+        val2 = null;
+        
 
-    for (i = 0; i < val.length; i++) {
+        for (i = 0; i <= 7; i++) {
+            
+            val2 =val2 . val.value.charAt(i);
+         
+        }
+    }
+val.value=val2;
+    for (i = 0; i < val2.length; i++) {
         let cuenta;
-        cuenta = val.charAt(i) * ci.charAt(i);
+        cuenta = val2.charAt(i) * ci.charAt(i);
         iden = iden + cuenta;
     }
 
@@ -43,7 +50,7 @@ function codVer(id, id2) {
         }
     } while (identificador == null);
 
-    document.getElementById(id2).innerHTML = val + "-" + identificador;
+    document.getElementById(id2).innerHTML = val2 + "-" + identificador;
 }
 
 
