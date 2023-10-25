@@ -10,7 +10,9 @@
 </head>
 
 <body>
-
+<script src="Vista/Js/validar.js">
+</script>
+<script src="Vista/Js/restricciones_form.js"></script>
 
 <?php
 
