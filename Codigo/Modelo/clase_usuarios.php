@@ -140,6 +140,10 @@ class usuarios
             $nfilas = mysqli_num_rows($resultado);
             if ($nfilas == 0) {
                 $resultado->free();
+                while ($this->db->more_results()) {
+                    $this->db->next_result();
+                    $this->db->store_result();
+                }
                 $sql = "INSERT INTO Usuarios (UsuarioCI, UsuarioNombre, UsuarioApellido, UsuarioTipo)
                 VALUES
                 ($UsuarioCI, $UsuarioNombre, $UsuarioApellido, $UsuarioTipo);";

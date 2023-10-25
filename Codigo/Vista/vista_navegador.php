@@ -4,7 +4,7 @@ require_once("Vista/vista_registro_funcionario_modal.html");
 require_once("Vista/vista_registro_usuario_modal.html");
 
 
-switch(){
+switch($menuTipo){
     case 1:
     ?>
 

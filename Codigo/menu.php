@@ -10,6 +10,8 @@ $apellido = $_SESSION['apellido'];
 $contacto = $_SESSION['contacto'];
 $jefe = $_SESSION['jefe'];
 $usuario = $nombre." ".$apellido;
+
+$menuTipo = 1;
 ?>
 
 <!DOCTYPE html>
