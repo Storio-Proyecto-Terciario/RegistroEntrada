@@ -26,7 +26,14 @@ $menuTipo = 1;
   <link rel="stylesheet" href="Vista/Css/navegador.css"> 
 </head>
 <body>
-    <?php require_once('Vista/vista_navegador.php');   ?>
+    <?php require_once('Vista/vista_navegador.php');  
+    
+    if(isset($_SESSION['mensaje'])){
+        echo $_SESSION['mensaje'];
+        unset($_SESSION['mensaje']);
+    }
+    
+    ?>
 
 
     <script src="Vista/Js/xml.js"></script>

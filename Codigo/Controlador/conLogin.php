@@ -47,7 +47,8 @@ switch ($tipo) {
                 header('location:../login.php');
             }
         }else{
-            echo "<script> console.log('usuario no registrado');</script>";
+            $msg = "<h2>El usuario no existe</h2>";
+            $_SESSION['mensaje'] = $msg;
             header('location:../login.php');
         }
 

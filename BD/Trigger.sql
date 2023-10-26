@@ -1,8 +1,7 @@
 use Proyecto;
 -- Crear un desencadenador (trigger) para ajustar UsuarioCI a NULL cuando sea necesario
 CREATE TRIGGER SetUsuarioCINull
-ON Registro
-AFTER UPDATE
+AFTER UPDATE ON Registro
 AS
 BEGIN
     IF UPDATE(RegistroInvitado)  -- Verificar si se actualiza el campo RegistroInvitado
