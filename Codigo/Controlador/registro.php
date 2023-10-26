@@ -15,9 +15,14 @@ switch ($val) {
         
         if (!$usuario->validarUsuario($ci)) {
             $usuario->insertarUsuario($ci, $nombre, $apellido, $tipo);
-            echo "<h2>Usuario registrado</h2>";
+       
+            $msg = "<h2>Usuario registrado</h2>";
+            $_SESSION['mensaje'] = $msg;
+            header('location:../menu.php');
         } else {
-            echo "<h2>El usuario ya existe</h2>";
+            $msg = "<h2>El usuario ya existe</h2>";
+            $_SESSION['mensaje'] = $msg;
+            header('location:../menu.php');
         }
 
         break;
@@ -33,11 +38,19 @@ switch ($val) {
             if (!$administrador->validarAdministrativo($ci, $con)) {
 
                 $administrador->altaAdministrativo($ci, $contra, $con, $jefe);
+
+                $msg = "<h2>Administrativo registrado</h2>";
+                $_SESSION['mensaje'] = $msg;
+                header('location:../menu.php');
             } else {
-                echo "<h2>El administrativo ya existe</h2>";
+                $msg = "<h2>El administrativo ya existe</h2>";
+                $_SESSION['mensaje'] = $msg;
+                header('location:../menu.php');
             }
         } else {
-            echo "<h2>Se nesecita un usuario para poder dar de alta un funcionario. </h2>";
+            $msg = "<h2>El usuario no existe</h2>";
+            $_SESSION['mensaje'] = $msg;
+            header('location:../menu.php');
         }
 
 
