@@ -121,13 +121,13 @@ class administrativos extends usuarios
     public function altaAdministrativo($ci, $contra, $con, $jefe)
     {
         // Valida si el admistrativo ya existe
-        $sql = "SELECT UsuarioCi FROM Administrativos WHERE UsuarioCi =$ci and AdministrativoCOntra=$contra";
+        $sql = "SELECT UsuarioCi FROM Administrativos WHERE UsuarioCi =$ci and AdministrativoContra='$contra' and AdministrativoExiste=1";
         if ($resultado = $this->db->query($sql)) {
             $nfilas = mysqli_num_rows($resultado);
             $resultado->free();
 
             if ($nfilas == 0) {
-                $sql = "CALL InsertarAdministrativoSupervisa($ci, $contra, $con, $jefe);";
+                $sql = "CALL InsertarAdministrativoSupervisa($ci, '$contra', '$con', $jefe);";
                 $this->db->query($sql);
             }
         } else {

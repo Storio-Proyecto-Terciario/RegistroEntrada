@@ -1,33 +1,29 @@
 
 
-<!--    -->
-<!--  <link rel="stylesheet" href="Css/modal_registr.css">  -->
-<!--  <link rel="stylesheet" href="Css/botones.css">  -->
-<!--  <link rel="stylesheet" href="Css/formulario_1.css">  -->
+
 
 
 <div id="modalRegUsu" class="modal">
     <span onclick="abrirModal('modalRegUsu',false)" class="close" title="Cerrar modal">&times;</span>
-    <form class="modal-content" action="Controlador/registro.php">
+    <form class="modal-content" method="post" action="Controlador/registro.php">
         <div class="container">
             <h1>Registrar usuario</h1>
             <p>Registro de nuevos usuarios del sistema.</p>
             <hr>
 
-            <label for="ci"><b>Cedula</b></label>
-            <p id="cid"></p>
-            <input type="text" name="cedula" id="ci" min="0" class="formInput" onkeydown="desabilitarFlechas(event)"
-                onkeyup="validarNumerico('ci');codVer('ci', 'cid');" onscroll="noScroll('ci')" maxlength="7" required>
+            <label for="usuCi"><b>Cedula</b></label>
+            <input type="text" name="cedula" id="usuCi" min="0" class="formInput" onkeydown="desabilitarFlechas(event)"
+                onkeyup="validarNumerico('usuCi');" onscroll="noScroll('usuCi')" maxlength="8" required>
 
-            <label for="nom"><b>Nombre</b></label>
-            <input type="text" name="nombre" id="nom" class="formInput" onkeyup="tiene_numeros_key('nom')" required>
+            <label for="usuNom"><b>Nombre</b></label>
+            <input type="text" name="nombre" id="usuNom" class="formInput" onkeyup="tiene_numeros_key('usuNom')" required>
 
-            <label for="ape"><b>Apellido</b></label>
-            <input type="text" name="apellido" id="ape" class="formInput" onkeyup="tiene_numeros_key('ape')" required>
+            <label for="usuApe"><b>Apellido</b></label>
+            <input type="text" name="apellido" id="usuApe" class="formInput" onkeyup="tiene_numeros_key('usuApe')" required>
 
-            <label for="ti"><b>Tipo</b></label>
-            <select name="tipo" id="ti" class="formInput">
-                <option value="">123321</option>
+            <label for="Tipo"><b>Tipo</b></label>
+            <select name="tipo" id="Tipo" class="formInput">
+                <option value="Profesor">123321</option>
                 <option value="">14241</option>
                 <option value="">234234</option>
             </select>
@@ -43,9 +39,4 @@
     </form>
 </div>
 
-<!--
-<script src="Js/modal_registro.js"></script>
-<script src="Js/validar.js"></script>
-<script src="Js/restricciones_form.js"></script>
 
--->

@@ -92,7 +92,10 @@ class usuarios
 
     function validarUsuario($ci)
     {
-        $sql = "call ValidarUsuario($ci);"; //exec ValidarUsuario @id =$ci;
+        $sql = "SELECT UsuarioCI
+        FROM Usuarios
+        WHERE UsuarioCI = $ci
+        AND UsuarioExiste = 1;"; //exec ValidarUsuario @id =$ci;
         if ($resultado = $this->db->query($sql)) {
             // Cuenta el numero de filas que dio la consulta.
             $nfilas = mysqli_num_rows($resultado);
@@ -133,16 +136,21 @@ class usuarios
 
     function insertarUsuario($UsuarioCI, $UsuarioNombre, $UsuarioApellido, $UsuarioTipo)
     {
-        $sql = "call ValidarUsuario($UsuarioCI);"; // exec ValidarUsuario @id =$UsuarioCI;
+        $sql = "SELECT UsuarioCI
+        FROM Usuarios
+        WHERE UsuarioCI = $UsuarioCI
+        AND UsuarioExiste = 1;"; // exec ValidarUsuario @id =$UsuarioCI;
         if ($resultado = $this->db->query($sql)) {
             // Valida si el usuario existe.
             // Cuenta el numero de filas que dio la consulta.
             $nfilas = mysqli_num_rows($resultado);
             if ($nfilas == 0) {
                 $resultado->free();
+            
                 $sql = "INSERT INTO Usuarios (UsuarioCI, UsuarioNombre, UsuarioApellido, UsuarioTipo)
                 VALUES
-                ($UsuarioCI, $UsuarioNombre, $UsuarioApellido, $UsuarioTipo);";
+                ($UsuarioCI, '$UsuarioNombre', '$UsuarioApellido', '$UsuarioTipo');";
+                echo $sql;
                 $this->db->query($sql);
             } else {
                 return false;

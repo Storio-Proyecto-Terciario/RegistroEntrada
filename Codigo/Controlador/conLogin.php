@@ -6,7 +6,7 @@ session_start();
 
 
 if (empty($_POST['t'] and empty($_POST['cedula']))) {
-   // header('location:../login.php');
+    header('location:../index.php');
 }
 $ci = $_POST['cedula'];
 $tipo = $_POST['t'];
@@ -23,11 +23,11 @@ switch ($tipo) {
             $des = "Usuario no registrado cedula: " . $ci;
         }
         $re->masRegistro($ci, $des);
-        header('location:../entrada.php');
+        header('location:../index.php?login=1');
         break;
     case 1:
         if (empty($_POST['con'])) {
-            echo "no hay contraseña";
+            header('location:../index.php');
         }
         if ($usuario->validarUsuario($ci)) {
             $administrativo = new administrativos();
@@ -39,16 +39,17 @@ switch ($tipo) {
                 $_SESSION['apellido'] = $datos['UsuarioApellido'];
                 $_SESSION['contacto'] = $datos['AdministrativoJefe'];
                 $_SESSION['jefe'] = $datos['AdministrativoJefe'];
+                $_SESSION['tipo'] = $datos['UsuarioTipo'];
+                $msg = "Inicio de sesion correcto";
+                $_SESSION['mensaje'] = $msg;
 
                 header('location:../menu.php');
             } else {
-                echo "contraseña incorrecta";
-                echo "<script> console.log('contraseña incorrecta". $_POST['con']."');</script>";
-                header('location:../login.php');
+
+                header('location:../index.php');
             }
-        }else{
-            echo "<script> console.log('usuario no registrado');</script>";
-            header('location:../login.php');
+        } else {
+            header('location:../index.php');
         }
 
         break;
