@@ -6,7 +6,7 @@ session_start();
 
 
 if (empty($_POST['t'] and empty($_POST['cedula']))) {
-    // header('location:../index.php');
+    header('location:../index.php');
 }
 $ci = $_POST['cedula'];
 $tipo = $_POST['t'];
