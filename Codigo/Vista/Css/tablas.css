@@ -23,3 +23,36 @@
   .icono{
       width: 30px ;
   }
+
+  .catalogo ul {
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+
+.catalogo .sigan {
+    display: inline;
+    background-color: #ff0909;
+    margin: 10px;
+    padding: 5px;
+ 
+    padding-bottom: 6px;
+    padding-top: 4px;
+ 
+}
+.catalogo .sigan a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.catalogo li {
+    display: inline;
+}
+
+.catalogo select {
+    background-color: #ff0909;
+    color: #ffffff;
+    border: none;
+    padding: 5px;
+    margin: 10px;
+}

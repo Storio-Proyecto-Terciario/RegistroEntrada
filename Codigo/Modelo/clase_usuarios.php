@@ -159,4 +159,32 @@ class usuarios
             die('Error SQL: ' . $this->db->error);
         }
     }
+
+    public function contarFilasUsuario(){
+
+
+        $sql="SELECT COUNT(*) as total FROM vistausuarios";
+        if ($resultado = $this->db->query($sql)) {
+            $cantidad = $resultado->fetch_assoc();
+            $resultado->free();
+            return $cantidad['total'];
+
+        }else{}
+    }
+
+    public function usuariosMostrar($comienzo, $final){
+        $array = array();
+        
+        $sql = "SELECT * FROM vistausuarios where UsuarioExiste=true ORDER BY UsuarioCI ASC LIMIT $comienzo , $final;";
+        $resultado = $this->db->query($sql);
+        
+        while($row = $resultado->fetch_assoc()){
+            $array[] = $row;
+        }
+        return $array;
+    }
+
+
 }
+
+

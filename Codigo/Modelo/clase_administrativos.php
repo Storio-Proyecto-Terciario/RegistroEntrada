@@ -134,4 +134,34 @@ class administrativos extends usuarios
             die('Error SQL: ' . $this->db->error);
         }
     }
+
+    public function contarFilasAdministraivo($jefe){
+
+        $sql="SELECT COUNT(*) as total FROM  vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true;";
+        if ($resultado = $this->db->query($sql)) {
+            $cantidad = $resultado->fetch_assoc();
+            $resultado->free();
+            return $cantidad['total'];
+
+        }else{}
+    }
+
+    public function mostrarAdministrativos($jefe, $comienzo, $final){
+        $sql = "SELECT UsuarioCI,UsuarioNombre,UsuarioApellido,AdministrativoContacto from 
+        vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true limit $comienzo, $final;";
+        if ($resultado = $this->db->query($sql)) {
+            if ($resultado->num_rows <= 0) {
+                
+                return null;
+            } else {
+                die('Error SQL: ' . $this->db->error);
+            }
+            while($row = $resultado->fetch_assoc()){
+                $array[] = $row;
+            }
+            return $array;
+        } else {
+            die('Error SQL: ' . $this->db->error);
+        }
+    }
 }

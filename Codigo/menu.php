@@ -20,10 +20,14 @@ $menuTipo = 1;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <link rel="stylesheet" href="Vista/Css/modal_registro.css">
-     <link rel="stylesheet" href="Vista/Css/botones.css"> 
-  <link rel="stylesheet" href="Vista/Css/formulario_1.css"> 
-  <link rel="stylesheet" href="Vista/Css/navegador.css"> 
+    <link rel="stylesheet" href="Vista/Css/modal_registro.css">
+    <link rel="stylesheet" href="Vista/Css/botones.css"> 
+    <link rel="stylesheet" href="Vista/Css/formulario_1.css"> 
+    <link rel="stylesheet" href="Vista/Css/tablas.css">
+
+
+    <link rel="stylesheet" href="Vista/Css/navegador.css">
+
 </head>
 <body>
     <?php require_once('Vista/vista_navegador.php');  
@@ -35,12 +39,30 @@ $menuTipo = 1;
     
     ?>
 
+    <p id='xml'></p>
+<script>
 
-    <script src="Vista/Js/xml.js"></script>
+function mostrarXML(url) {
+    var xml = new XMLHttpRequest();
+    xml.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("xml").innerHTML = this.responseText;
+        }
+    };
+    xml.open("GET", url, true);
+    xml.send();
+}
+</script>
+
+<!-- <script src="Vista/Js/xml.js"></script> -->
 <script src="Vista/Js/modal_registro.js"></script>
 <script src="Vista/Js/validar.js"></script>
 <script src="Vista/Js/restricciones_form.js"></script>
 <script src="Vista/Js/navegador.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
