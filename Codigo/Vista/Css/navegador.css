@@ -1,8 +1,8 @@
-body {margin:0;font-family:Arial}
+body {margin:0;font-family:'Times New Roman', Times, serif}
 
 .topnav {
   overflow: hidden;
-  background-color: #8b0006;
+  background-color: #ece4e5;
 }
 
 .topnav a {
@@ -16,7 +16,7 @@ body {margin:0;font-family:Arial}
 }
 
 .active {
-  background-color: #f00000;
+  background-color: #d1cbcb;
   color: white;
 }
 
