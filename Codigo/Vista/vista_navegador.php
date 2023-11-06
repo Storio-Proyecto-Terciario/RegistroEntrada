@@ -31,7 +31,16 @@ switch($menuTipo){
             <a href="#" onclick="abrirModal('modalRegFun',true)" >Administraivo</a>
         </div>
     </div>
-    <a href="#about" class="usuario"><?php echo $usuario ?></a>
+    <div class="dropdown">
+        <button class="dropbtn"><?php echo $usuario ?>
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="Controlador/cerrar.php" >Cerrar</a>
+            <a href="#" onclick="abrirModal('modalRegFun',true)" >Administraivo</a>
+        </div>
+    </div>
+
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navResponsive()">&#9776;</a>
 </nav>
 

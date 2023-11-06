@@ -2,6 +2,9 @@
 require_once('../Modelo/clase_registro.php');
 require_once('../Vista/vista_tabla_entrada.php');
 
+
+$msg = "<h2>Cambio realizado</h2>";
+$_SESSION['mensaje'] = $msg;
 function fecha()
 {
     $array = array();
