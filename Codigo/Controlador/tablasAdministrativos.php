@@ -18,6 +18,35 @@ $usuarios = new administrativos();
 
 empty($_GET['index']) ? $pagina_actual = 1 : $pagina_actual = $_GET['index'];
 
+isset($_GET['borrar']) ? $usuarios->borrarAdministrativo($_GET['borrar']) : null;
+
+$buscar = null;
+$url = null;
+if(isset($_GET['buscarOpcion'])){
+    $que =$_GET['valor'];
+    switch($_GET['buscarOpcion']){
+        case 1:
+            $buscar = "and UsuarioCI LIKE '%$que%'";
+            $url="&buscarOpcion=1&valor=$que";
+        break;
+        case 2:
+            $buscar = "and UsuarioNombre LIKE '%$que%'";
+            $url="&buscarOpcion=2&valor=$que";
+        break;
+        case 3:
+            $buscar = "and UsuarioApellido LIKE '%$que%'";
+            $url="&buscarOpcion=3&valor=$que";
+        break;
+        case 4:
+            $buscar = "and AdministrativoContacto LIKE '%$que%'";
+            $url="&buscarOpcion=4&valor=$que";
+        default:
+            $buscar = null;
+            $url="";
+        break;
+    }
+}
+
 
 $filassMostrar = 2;
 
@@ -28,7 +57,7 @@ $comienzo = ($pagina_actual - 1) * $filassMostrar;
 //$final = $comienzo + $filassMostrar;
 
 // El numero de filas
-$total_resultados = $usuarios->contarFilasAdministraivo($ci);
+$total_resultados = $usuarios->contarFilasAdministraivo($ci, $buscar);
 if(empty($total_resultados)){
     echo "<h1>No hay datos que mostrar.</h1>";
     exit();
@@ -37,14 +66,14 @@ if(empty($total_resultados)){
 $total_paginas = ceil($total_resultados / $filassMostrar);
 
 
-$ver = $usuarios->mostrarAdministrativos($ci,$comienzo, $filassMostrar);
+$ver = $usuarios->mostrarAdministrativos($ci,$comienzo, $filassMostrar, $buscar);
 
 
 
 
 
 
-mostrarTabla($ver, $total_paginas, $pagina_actual);
+mostrarTablaFun($ver, $total_paginas, $pagina_actual,$url);
 unset($ver, $total_paginas, $pagina_actual, $filassMostrar, $comienzo, $total_resultados);
 
 ?>

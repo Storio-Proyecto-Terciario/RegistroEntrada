@@ -127,7 +127,8 @@ class administrativos extends usuarios
             $resultado->free();
 
             if ($nfilas == 0) {
-                $sql = "CALL InsertarAdministrativoSupervisa($ci, '$contra', '$con', $jefe);";
+                $sql = "CALL proc_InsertarAdministrativoSupervisa($ci, '$contra', '$con', $jefe);";
+    
                 $this->db->query($sql);
             }
         } else {
@@ -135,32 +136,43 @@ class administrativos extends usuarios
         }
     }
 
-    public function contarFilasAdministraivo($jefe){
+    public function borrarAdministrativo($ci)
+    {
+        $sql = "UPDATE Administrativos SET AdministrativoExiste=0 WHERE UsuarioCI=$ci;";
+        if ($resultado = $this->db->query($sql)) {
+            $resultado->free();
+        } else {
+            die('Error SQL: ' . $this->db->error);
+        }
+    }
 
-        $sql="SELECT COUNT(*) as total FROM  vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true;";
+    public function contarFilasAdministraivo($jefe, $buscar){
+
+        $sql="SELECT COUNT(*) as total FROM  vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true $buscar;";
         if ($resultado = $this->db->query($sql)) {
             $cantidad = $resultado->fetch_assoc();
             $resultado->free();
             return $cantidad['total'];
 
-        }else{}
+        }else{
+            die('Error SQL: ' . $this->db->error);
+        }
     }
 
-    public function mostrarAdministrativos($jefe, $comienzo, $final){
+    public function mostrarAdministrativos($jefe, $comienzo, $final, $buscar){
         $sql = "SELECT UsuarioCI,UsuarioNombre,UsuarioApellido,AdministrativoContacto from 
-        vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true limit $comienzo, $final;";
+        vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true $buscar limit $comienzo, $final;";
         if ($resultado = $this->db->query($sql)) {
             if ($resultado->num_rows <= 0) {
                 
                 return null;
-            } else {
-                die('Error SQL: ' . $this->db->error);
             }
             while($row = $resultado->fetch_assoc()){
                 $array[] = $row;
             }
             return $array;
         } else {
+            echo "Error: " . $sql . "<br>" . $this->db->error;
             die('Error SQL: ' . $this->db->error);
         }
     }

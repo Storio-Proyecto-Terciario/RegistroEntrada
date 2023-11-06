@@ -35,6 +35,8 @@ switch ($val) {
             $contra = $_POST['contraseña'];
             $con = $_POST['correo'];
             $jefe = $_SESSION['ci'];
+
+           
             if (!$administrador->validarAdministrativo($ci, $con)) {
 
                 $administrador->altaAdministrativo($ci, $contra, $con, $jefe);

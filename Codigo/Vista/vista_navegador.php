@@ -12,7 +12,7 @@ switch($menuTipo){
 
 <nav class="topnav" id="myTopnav">
     <a href="#home" class="active">Home</a>
-    <a href="#retrada">Entrada</a>
+    <a href="#" onclick="mostrarXML('Controlador/tablasEntrada.php');">Entrada</a>
     <div class="dropdown">
         <button class="dropbtn">Listas
             <i class="fa fa-caret-down"></i>
