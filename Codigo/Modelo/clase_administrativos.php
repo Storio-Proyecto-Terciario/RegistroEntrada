@@ -136,6 +136,21 @@ class administrativos extends usuarios
         }
     }
 
+    public function modificarAdministrativoContra($ci, $contra1, $contra2){
+        if($contra1==$contra2){
+            $sql = "UPDATE Administrativos SET AdministrativoContra='$contra1' WHERE UsuarioCI=$ci;";
+            if ($resultado = $this->db->query($sql)) {
+                $resultado->free();
+                return true;
+            } else {
+                die('Error SQL: ' . $this->db->error);
+            }
+            
+        }else{
+            return false;
+        }
+    }
+
     public function borrarAdministrativo($ci)
     {
         $sql = "UPDATE Administrativos SET AdministrativoExiste=0 WHERE UsuarioCI=$ci;";

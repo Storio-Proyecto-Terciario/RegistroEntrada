@@ -13,6 +13,9 @@ $apellido = $_SESSION['apellido'];
 $contacto = $_SESSION['contacto'];
 $jefe = $_SESSION['jefe'];
 
+$msg = "<h2>Cambio realizado</h2>";
+$_SESSION['mensaje'] = $msg;
+
 
 $usuarios = new administrativos();
 
