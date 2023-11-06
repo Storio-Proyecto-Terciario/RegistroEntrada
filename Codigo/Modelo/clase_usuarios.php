@@ -147,10 +147,8 @@ class usuarios
             if ($nfilas == 0) {
                 $resultado->free();
             
-                $sql = "INSERT INTO Usuarios (UsuarioCI, UsuarioNombre, UsuarioApellido, UsuarioTipo)
-                VALUES
-                ($UsuarioCI, '$UsuarioNombre', '$UsuarioApellido', '$UsuarioTipo');";
-                echo $sql;
+                $sql = "CALL proc_insertarUsuario($UsuarioCI, '$UsuarioNombre', '$UsuarioApellido', '$UsuarioTipo');";
+                //echo $sql;
                 $this->db->query($sql);
             } else {
                 return false;
@@ -159,4 +157,40 @@ class usuarios
             die('Error SQL: ' . $this->db->error);
         }
     }
+
+    public function borrarUsuario($ci)
+    {
+        $sql = "UPDATE Usuarios
+        SET UsuarioExiste = 0
+        WHERE UsuarioCI = $ci;";
+        $this->db->query($sql);
+    }
+
+    public function contarFilasUsuario( $buscar){
+
+
+        $sql="SELECT COUNT(*) as total FROM vistausuarios  where UsuarioExiste=1 $buscar;";
+        if ($resultado = $this->db->query($sql)) {
+            $cantidad = $resultado->fetch_assoc();
+            $resultado->free();
+            return $cantidad['total'];
+
+        }else{}
+    }
+
+    public function usuariosMostrar($comienzo, $final, $buscar){
+        $array = array();
+        
+        $sql = "SELECT * FROM vistausuarios where UsuarioExiste=true $buscar ORDER BY UsuarioCI ASC LIMIT $comienzo , $final;";
+        $resultado = $this->db->query($sql);
+        
+        while($row = $resultado->fetch_assoc()){
+            $array[] = $row;
+        }
+        return $array;
+    }
+
+
 }
+
+

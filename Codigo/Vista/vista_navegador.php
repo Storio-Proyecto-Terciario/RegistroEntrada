@@ -8,16 +8,18 @@ switch($menuTipo){
     case 1:
     ?>
 
+
+
 <nav class="topnav" id="myTopnav">
     <a href="#home" class="active">Home</a>
-    <a href="#retrada">Entrada</a>
+    <a href="#" onclick="mostrarXML('Controlador/tablasEntrada.php');">Entrada</a>
     <div class="dropdown">
         <button class="dropbtn">Listas
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#" onclick="mostrar('?op=1')">Usuarios</a>
-            <a href="#" onclick="mostrar('?op=2')">Administraivo</a>
+            <a href="#" onclick="mostrarXML('Controlador/tablasUsuarios.php');">Usuarios</a>
+            <a href="#" onclick="mostrarXML('Controlador/tablasAdministrativos.php');">Administraivo</a>
         </div>
     </div>
     <div class="dropdown">
@@ -46,8 +48,8 @@ switch($menuTipo){
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#" onclick="mostrarXML('Controlador/listar.php?index=1&op=1')">Usuarios</a>
-            <a href="#" onclick="mostrarXML('Controlador/listar.php?index=1&op=2')">Administraivo</a>
+            <a href="index.php" onclick="">Usuarios</a>
+            <a href="index.php" onclick="">Administraivo</a>
         </div>
     </div>
     <div class="dropdown">
@@ -55,8 +57,8 @@ switch($menuTipo){
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#" onclick="abrirModal('modalRegUsu',true)" >Usuarios</a>
-            <a href="#" onclick="abrirModal('modalRegFun',true)" >Administraivo</a>
+            <a href="index.php" onclick="" >Usuarios</a>
+            <a href="index.php" onclick="" >Administraivo</a>
         </div>
     </div>
     <a href="#about" class="usuario">usuario</a>

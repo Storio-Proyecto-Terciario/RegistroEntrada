@@ -99,4 +99,47 @@ class registro
         }
         
     }
+
+    
+    public function contarFilasRegistro($invitado, $buscar){
+    
+
+        if($invitado){
+            $sql="SELECT COUNT(*) as total FROM  vistaregistro WHERE RegistroInvitado = 1 $buscar;";
+        }else{
+            $sql="SELECT COUNT(*) as total FROM  vistaregistro WHERE RegistroInvitado = 0 $buscar;";
+        }
+        if ($resultado = $this->db->query($sql)) {
+            $cantidad = $resultado->fetch_assoc();
+            $resultado->free();
+            return $cantidad['total'];
+
+        }else{
+
+        }
+        
+    }
+
+    public function mostrarRegistro( $comienzo, $final, $invitado, $buscar){
+
+        if($invitado){
+            $sql = "SELECT UsuarioRegistroCI, RegistroDesc, RealizaDia, RealizaHora from 
+            vistaregistro WHERE RegistroInvitado = 1 $buscar limit $comienzo, $final;";
+        }else{
+            $sql = "SELECT UsuarioCI, UsuarioNombre, UsuarioApellido,UsuarioTipo, RealizaDia, RealizaHora from 
+            vistaregistro WHERE RegistroInvitado = 0 $buscar limit $comienzo, $final;";
+        }
+        if ($resultado = $this->db->query($sql)) {
+            if ($resultado->num_rows <= 0) {
+                
+                return null;
+            }
+            while($row = $resultado->fetch_assoc()){
+                $array[] = $row;
+            }
+            return $array;
+        } else {
+            die('Error SQL: ' . $this->db->error);
+        }
+    }
 }
