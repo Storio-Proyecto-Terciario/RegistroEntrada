@@ -166,7 +166,7 @@ class usuarios
         $this->db->query($sql);
     }
 
-    private function Buscador($opcion, $buscar){
+    private function BuscadorUsuarioConsulta($opcion, $buscar){
         switch($opcion){
             case 1:
                 return "and UsuarioCI LIKE '%$buscar%'";
@@ -194,7 +194,7 @@ class usuarios
 
     public function contarFilasUsuario($opcion,$buscar){
 
-        $a_buscar = $this->Buscador($opcion, $buscar);
+        $a_buscar = $this->BuscadorUsuarioConsulta($opcion, $buscar);
 
         $sql="SELECT COUNT(*) as total FROM vistausuarios  where UsuarioExiste=1 $a_buscar;";
         if ($resultado = $this->db->query($sql)) {
@@ -207,7 +207,7 @@ class usuarios
 
     public function usuariosMostrar($comienzo, $final,$opcion, $buscar){
 
-        $a_buscar = $this->Buscador($opcion, $buscar);
+        $a_buscar = $this->BuscadorUsuarioConsulta($opcion, $buscar);
         $array = array();
         
         $sql = "SELECT * FROM vistausuarios where UsuarioExiste=true $a_buscar ORDER BY UsuarioCI ASC LIMIT $comienzo , $final;";

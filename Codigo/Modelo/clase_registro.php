@@ -99,15 +99,72 @@ class registro
         }
         
     }
+    private function fechaConsulta( $array){
+        if(is_array($array)){
+            isset($array[4])?$array[4]:$array[4]=false;
+        }else{
+            return "";   
+        }
+           
+        switch($array[4]){
+            case   1:
+                return "AND RealizaDia BETWEEN '".$array[0]."' AND '".$array[1]."'";
+                break;
+            case   2:
+                return "AND RealizaHora BETWEEN '".$array[2]."' AND '".$array[3]."'";
+                break;
+            case   3:
+                return "AND RealizaDia BETWEEN '".$array[0]."' AND '".$array[1]."' AND RealizaHora BETWEEN '".$array[2]."' AND '".$array[3]."'";
+                break;
+            default:
+                return "";
+                break;
+        }
+    }
 
+    private function invitado($invitado, $opcion, $buscar){
+        if ( $invitado) {
+            switch ($opcion) {
+                case 1:
+                    return "and UsuarioRegistroCI LIKE '%$buscar%' ";
+                    break;
+                case 5:
+                    return "and RegistroDesc LIKE '%$buscar%' ";
+                    break;
+                default:
+                    return "";
+                    break;
+            }
+        }else{
+            switch ($opcion) {
+                case 1:
+                    return "and UsuarioCI LIKE '%$buscar%'";
+                    break;
+                case 2:
+                    return "and UsuarioNombre LIKE '%$buscar%'";
+                    break;
+                case 3:
+                    return "and UsuarioApellido LIKE '%$buscar%'";
+                    break;
+                case 4:
+                    return "and UsuarioTipo LIKE '%$buscar%'";
+                    break;
+                default:
+                    return "";
+                    break;  
+            }
+        }
+    }
     
-    public function contarFilasRegistro($invitado, $buscar){
+    public function contarFilasRegistro($invitado,$opcion, $array, $buscar){
+
+        $a_buscar = $this->fechaConsulta( $array) . $this->invitado($invitado, $opcion, $buscar);
     
 
         if($invitado){
-            $sql="SELECT COUNT(*) as total FROM  vistaregistro WHERE RegistroInvitado = 1 $buscar;";
+            $sql="SELECT COUNT(*) as total FROM  vistaregistro WHERE RegistroInvitado = 1 $a_buscar;";
         }else{
-            $sql="SELECT COUNT(*) as total FROM  vistaregistro WHERE RegistroInvitado = 0 $buscar;";
+            $sql="SELECT COUNT(*) as total FROM  vistaregistro WHERE RegistroInvitado = 0 $a_buscar;";
         }
         if ($resultado = $this->db->query($sql)) {
             $cantidad = $resultado->fetch_assoc();
@@ -120,14 +177,15 @@ class registro
         
     }
 
-    public function mostrarRegistro( $comienzo, $final, $invitado, $buscar){
-
+    public function mostrarRegistro( $comienzo, $final, $invitado, $buscar,$array_fecha, $opcion){
+        $a_buscar = $this->fechaConsulta( $array_fecha) . $this->invitado($invitado, $opcion, $buscar);
+    
         if($invitado){
             $sql = "SELECT UsuarioRegistroCI, RegistroDesc, RealizaDia, RealizaHora from 
-            vistaregistro WHERE RegistroInvitado = 1 $buscar limit $comienzo, $final;";
+            vistaregistro WHERE RegistroInvitado = 1 $a_buscar limit $comienzo, $final;";
         }else{
             $sql = "SELECT UsuarioCI, UsuarioNombre, UsuarioApellido,UsuarioTipo, RealizaDia, RealizaHora from 
-            vistaregistro WHERE RegistroInvitado = 0 $buscar limit $comienzo, $final;";
+            vistaregistro WHERE RegistroInvitado = 0 $a_buscar limit $comienzo, $final;";
         }
         if ($resultado = $this->db->query($sql)) {
             if ($resultado->num_rows <= 0) {
