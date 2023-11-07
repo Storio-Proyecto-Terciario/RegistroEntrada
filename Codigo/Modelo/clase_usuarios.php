@@ -166,10 +166,37 @@ class usuarios
         $this->db->query($sql);
     }
 
-    public function contarFilasUsuario( $buscar){
+    private function Buscador($opcion, $buscar){
+        switch($opcion){
+            case 1:
+                return "and UsuarioCI LIKE '%$buscar%'";
+                
+            break;
+            case 2:
+                return "and UsuarioNombre LIKE '%$buscar%'";
+                
+            break;
+            case 3:
+                return "and UsuarioApellido LIKE '%$buscar%'";
+                
+            break;
+            case 4:
+                return "and UsuarioTipo LIKE '%$buscar%'";
+                
+            default:
+                return null;
+                
+            break;
+        }
+    }
 
 
-        $sql="SELECT COUNT(*) as total FROM vistausuarios  where UsuarioExiste=1 $buscar;";
+
+    public function contarFilasUsuario($opcion,$buscar){
+
+        $a_buscar = $this->Buscador($opcion, $buscar);
+
+        $sql="SELECT COUNT(*) as total FROM vistausuarios  where UsuarioExiste=1 $a_buscar;";
         if ($resultado = $this->db->query($sql)) {
             $cantidad = $resultado->fetch_assoc();
             $resultado->free();
@@ -178,10 +205,12 @@ class usuarios
         }else{}
     }
 
-    public function usuariosMostrar($comienzo, $final, $buscar){
+    public function usuariosMostrar($comienzo, $final,$opcion, $buscar){
+
+        $a_buscar = $this->Buscador($opcion, $buscar);
         $array = array();
         
-        $sql = "SELECT * FROM vistausuarios where UsuarioExiste=true $buscar ORDER BY UsuarioCI ASC LIMIT $comienzo , $final;";
+        $sql = "SELECT * FROM vistausuarios where UsuarioExiste=true $a_buscar ORDER BY UsuarioCI ASC LIMIT $comienzo , $final;";
         $resultado = $this->db->query($sql);
         
         while($row = $resultado->fetch_assoc()){
