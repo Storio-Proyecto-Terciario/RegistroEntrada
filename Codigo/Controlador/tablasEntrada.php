@@ -216,3 +216,5 @@ $ver = $registro->mostrarRegistro($comienzo, $filassMostrar, $invitado2, $buscar
 
 mostrarTablaEntrada($ver, $total_paginas, $pagina_actual, $url);
 unset($ver, $total_paginas, $pagina_actual, $filassMostrar, $comienzo, $total_resultados);
+
+?>

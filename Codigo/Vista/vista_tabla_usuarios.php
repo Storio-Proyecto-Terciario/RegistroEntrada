@@ -1,5 +1,4 @@
 <?php
-
 function mostrarTablaUsu($usuarios, $total_paginas, $pagina_actual, $urls)
 {
 
@@ -14,6 +13,10 @@ function mostrarTablaUsu($usuarios, $total_paginas, $pagina_actual, $urls)
     <option value="3"> Apellido</option>
     <option value="4"> Tipo</option>
   </select>
+  <br>
+
+
+  <a href="Controlador/pdf.php?que=1" target="_blank">PDF</a>
 
   <button id="enviar" onclick="
     mostrarXML('Controlador/tablasUsuarios.php?buscarOpcion='+document.getElementById('BuscarOpcion').value+'&'+'valor='+document.getElementById('Buscar').value)

@@ -28,6 +28,8 @@ function mostrarTablaEntrada($usuarios, $total_paginas, $pagina_actual, $urls)
     
         <input type='radio' id='miRadioUsuario' name='grupoRadioInvitado' value='no' onclick='invitado()' >
         <label for='miRadioUsuario'>usuarios</label>
+        
+  <a href='Controlador/pdf.php?que=4' target='_blank'>PDF</a>
         ";
       } else {
         echo "
@@ -36,6 +38,10 @@ function mostrarTablaEntrada($usuarios, $total_paginas, $pagina_actual, $urls)
     
         <input type='radio' id='miRadioUsuario' name='grupoRadioInvitado' value='no' onclick='invitado()' checked>
         <label for='miRadioUsuario'>usuarios</label>
+
+      
+
+  <a href='Controlador/pdf.php?que=3' target='_blank'>PDF</a>
         ";
       }
 

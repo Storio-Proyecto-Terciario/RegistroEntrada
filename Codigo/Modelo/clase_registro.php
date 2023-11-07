@@ -195,9 +195,12 @@ class registro
             while($row = $resultado->fetch_assoc()){
                 $array[] = $row;
             }
+            $_SESSION['Datos'] = $array;
             return $array;
         } else {
             die('Error SQL: ' . $this->db->error);
         }
     }
 }
+
+?>

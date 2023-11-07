@@ -14,6 +14,7 @@ function mostrarTablaFun($usuarios, $total_paginas, $pagina_actual, $urls)
     <option value="4"> Contacto</option>
   </select>
 
+  <a href="Controlador/pdf.php?que=2" target="_blank">PDF</a>
   <button id="enviar" onclick="
     mostrarXML('Controlador/tablasAdministrativos.php?buscarOpcion='+document.getElementById('BuscarOpcion').value+'&'+'valor='+document.getElementById('Buscar').value)
    " disabled> Buscar</button>

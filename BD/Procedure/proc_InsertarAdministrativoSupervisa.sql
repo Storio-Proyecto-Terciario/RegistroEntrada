@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarAdministrativoSupervisa`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_InsertarAdministrativoSupervisa`(
     IN p_UsuarioCI INT,
     IN p_AdministrativoContra VARCHAR(255),
     IN p_AdministrativoContacto VARCHAR(25),
@@ -14,7 +14,12 @@ BEGIN
     END;
 
     START TRANSACTION; 
-
+	IF p_UsuarioCI=(SELECT UsuarioCI FROM administrativos WHERE UsuarioCI=p_UsuarioCI and 
+    `AdministrativoExiste`=1 ) THEN
+        
+	ROLLBACK;
+    END IF;
+    
     IF p_UsuarioCI=(SELECT UsuarioCI FROM administrativos WHERE UsuarioCI=p_UsuarioCI and 
     `AdministrativoExiste`=0 ) THEN
         
@@ -25,14 +30,14 @@ BEGIN
         WHERE UsuarioCI = p_UsuarioCI;
         
           UPDATE supervisa
-        SET AdministrativoJefe = p_AdministrativoJefe
+        SET Supervisado= p_AdministrativoJefe
         WHERE UsuarioCI = p_UsuarioCI;
     else
         
         INSERT INTO Administrativos (UsuarioCI, AdministrativoContra, AdministrativoContacto)
         VALUES (p_UsuarioCI, p_AdministrativoContra, p_AdministrativoContacto);
 		
-        INSERT INTO Supervisa (UsuarioCI, AdministrativoJefe)
+        INSERT INTO Supervisa (Supervisado, AdministrativoJefe)
         VALUES (p_UsuarioCI, p_AdministrativoJefe);
     END IF;
 
