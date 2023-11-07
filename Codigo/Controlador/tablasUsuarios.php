@@ -2,7 +2,6 @@
 require_once('../Modelo/clase_usuarios.php');
 require_once('../Vista/vista_tabla_usuarios.php');
 
-
 $msg = "<h2>Cambio realizado</h2>";
 $_SESSION['mensaje'] = $msg;
 session_start();
@@ -63,13 +62,14 @@ if(empty($total_resultados)){
     echo "<h1>No hay datos que mostrar.</h1>";
     exit();
 }else{
-    echo "Se encontraron un total de " . $total_resultados . "coincidencias." . "<br>";
+    echo "Se encontraron un total de " . $total_resultados . " coincidencias." . "<br>";
 }
 // Calcular el número total de páginas
 $total_paginas = ceil($total_resultados / $filassMostrar);
 
-
 $ver = $usuarios->usuariosMostrar($comienzo, $filassMostrar,$opcion, $buscar);
 
 mostrarTablaUsu($ver, $total_paginas, $pagina_actual,$url);
+
 unset($ver, $total_paginas, $pagina_actual, $filassMostrar, $comienzo, $total_resultados);
+?>

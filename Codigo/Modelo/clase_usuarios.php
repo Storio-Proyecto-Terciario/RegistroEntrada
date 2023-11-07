@@ -216,6 +216,8 @@ class usuarios
         while($row = $resultado->fetch_assoc()){
             $array[] = $row;
         }
+
+        $_SESSION['Datos'] = $array; // $myArray es tu array
         return $array;
     }
 

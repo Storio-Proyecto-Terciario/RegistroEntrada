@@ -59,13 +59,12 @@ class administrativos extends usuarios
 
 
 
-
-
-
     //Validar Administrativo
 
     function validarAdministrativo($ci, $con)
     {
+
+        $con = md5($con);
         $sql = "SELECT UsuarioCI FROM Administrativos WHERE UsuarioCI =$ci and AdministrativoContra='$con' and AdministrativoExiste=1;"; //exec ValidarAdministrativo @id =$ci;
 
         if ($resultado = $this->db->query($sql)) {
@@ -120,6 +119,8 @@ class administrativos extends usuarios
 
     public function altaAdministrativo($ci, $contra, $con, $jefe)
     {
+        $contra = md5($contra);
+        
         // Valida si el admistrativo ya existe
         $sql = "SELECT UsuarioCi FROM Administrativos WHERE UsuarioCi =$ci and AdministrativoContra='$contra' and AdministrativoExiste=1";
         if ($resultado = $this->db->query($sql)) {
@@ -138,6 +139,7 @@ class administrativos extends usuarios
 
     public function modificarAdministrativoContra($ci, $contra1, $contra2){
         if($contra1==$contra2){
+            $contra1 = md5($contra1);
             $sql = "UPDATE Administrativos SET AdministrativoContra='$contra1' WHERE UsuarioCI=$ci;";
             if ($resultado = $this->db->query($sql)) {
                 $resultado->free();
@@ -208,6 +210,7 @@ class administrativos extends usuarios
             while($row = $resultado->fetch_assoc()){
                 $array[] = $row;
             }
+            $_SESSION['Datos'] = $array;
             return $array;
         } else {
             echo "Error: " . $sql . "<br>" . $this->db->error;
