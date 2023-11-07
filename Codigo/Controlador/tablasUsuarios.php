@@ -63,4 +63,6 @@ $ver = $usuarios->usuariosMostrar($comienzo, $filassMostrar,$opcion, $buscar);
 mostrarTablaUsu($ver, $total_paginas, $pagina_actual, $usuarios->url($opcion, $buscar));
 unset($ver, $total_paginas, $pagina_actual, $filassMostrar, $comienzo, $total_resultados);
 
+
+
 ?>
