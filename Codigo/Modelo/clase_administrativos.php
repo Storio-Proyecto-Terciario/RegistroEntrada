@@ -161,9 +161,30 @@ class administrativos extends usuarios
         }
     }
 
-    public function contarFilasAdministraivo($jefe, $buscar){
+    private function BuscarAdministrativoConsulta($opcion, $buscar){
+        switch($opcion){
+            case 1:
+                return "and UsuarioCI LIKE '%$buscar%'";
+            break;
+            case 2:
+                return "and UsuarioNombre LIKE '%$buscar%'";
+            break;
+            case 3:
+                return "and UsuarioApellido LIKE '%$buscar%'";
+            break;
+            case 4:
+                return "and AdministrativoContacto LIKE '%$buscar%'";
+            default:
+               return null;
+            break;
+        }
+    }
 
-        $sql="SELECT COUNT(*) as total FROM  vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true $buscar;";
+    public function contarFilasAdministraivo($jefe, $opcion, $buscar){
+
+        $a_buscar = $this->BuscarAdministrativoConsulta($opcion, $buscar);
+
+        $sql="SELECT COUNT(*) as total FROM  vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true $a_buscar;";
         if ($resultado = $this->db->query($sql)) {
             $cantidad = $resultado->fetch_assoc();
             $resultado->free();
@@ -174,9 +195,11 @@ class administrativos extends usuarios
         }
     }
 
-    public function mostrarAdministrativos($jefe, $comienzo, $final, $buscar){
+    public function mostrarAdministrativos($jefe, $comienzo, $final,$opcion, $buscar){
+
+        $a_buscar = $this->BuscarAdministrativoConsulta($opcion, $buscar);
         $sql = "SELECT UsuarioCI,UsuarioNombre,UsuarioApellido,AdministrativoContacto from 
-        vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true $buscar limit $comienzo, $final;";
+        vistausuarioadministrativo where AdministrativoJefe=$jefe and AdministrativoExiste=true $a_buscar limit $comienzo, $final;";
         if ($resultado = $this->db->query($sql)) {
             if ($resultado->num_rows <= 0) {
                 

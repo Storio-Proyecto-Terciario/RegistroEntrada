@@ -23,8 +23,9 @@ empty($_GET['index']) ? $pagina_actual = 1 : $pagina_actual = $_GET['index'];
 isset($_GET['borrar']) ? $usuarios->borrarUsuario($_GET['borrar']) : null;
 
 
-isset($_GET['buscarOpcion']) ? $opcion = $_GET['buscarOpcion']  : $opcion=null;
-isset($_GET['valor']) ? $buscar = $_GET['valor'] : $busacar=null;
+if(isset($_GET['buscarOpcion'])){
+$opcion = $_GET['buscarOpcion'];
+isset($_GET['valor']) ? $buscar = $_GET['valor'] : $buscar=null;
 
 switch($opcion){
     case 1:
@@ -42,6 +43,11 @@ switch($opcion){
         $url =  "";
     break;
 }
+}else{
+    $opcion = null;
+    $buscar = null;
+    $url = "";
+}
 
 $filassMostrar = 2;
 
@@ -53,16 +59,17 @@ $comienzo = ($pagina_actual - 1) * $filassMostrar;
 
 // El numero de filas
 $total_resultados = $usuarios->contarFilasUsuario($opcion, $buscar);
-
+if(empty($total_resultados)){
+    echo "<h1>No hay datos que mostrar.</h1>";
+    exit();
+}else{
+    echo "Se encontraron un total de " . $total_resultados . "coincidencias." . "<br>";
+}
 // Calcular el número total de páginas
 $total_paginas = ceil($total_resultados / $filassMostrar);
 
 
 $ver = $usuarios->usuariosMostrar($comienzo, $filassMostrar,$opcion, $buscar);
 
-mostrarTablaUsu($ver, $total_paginas, $pagina_actual, $usuarios->url($opcion, $buscar));
+mostrarTablaUsu($ver, $total_paginas, $pagina_actual,$url);
 unset($ver, $total_paginas, $pagina_actual, $filassMostrar, $comienzo, $total_resultados);
-
-
-
-?>
