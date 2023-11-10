@@ -1,3 +1,4 @@
+-- Active: 1696277010849@@127.0.0.1@3306@proyecto
 CREATE DEFINER=`root`@`localhost` TRIGGER `actualizar_supervisado` AFTER UPDATE ON `administrativos` FOR EACH ROW BEGIN
     DECLARE jefe_ci INT;
     

@@ -5,10 +5,11 @@ session_start();
 
 
 $val = $_POST['re'];
-$ci = $_POST['cedula'];
+
 $usuario = new usuarios();
 switch ($val) {
     case 1:
+        $ci = $_POST['cedula'];
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $tipo = $_POST['tipo'];
@@ -29,7 +30,7 @@ switch ($val) {
 
 
     case 2:
-
+        $ci = $_POST['cedula'];
         if ($usuario->validarUsuario($ci)) {
             $administrador = new administrativos();
             $contra = $_POST['contraseña'];
@@ -59,8 +60,14 @@ switch ($val) {
         break;
     case 3:
         $administrador = new administrativos();
-        $contra1 = $_POST['contraseña1'];
-        $contra2 = $_POST['contraseña2'];
+        $contra1 = $_POST['con1'];
+        $contra2 = $_POST['con2'];
+        if($contra1 == '***'){
+            $msg = "<h2>No se pudo realizar el cambio</h2>";
+            $_SESSION['mensaje'] = $msg;
+            header('location:../menu.php');
+        }
+        
         if ($administrador->modificarAdministrativoContra($_SESSION['ci'], $contra1, $contra2)) {
             $msg = "<h2>Cambio realizado</h2>";
             $_SESSION['mensaje'] = $msg;

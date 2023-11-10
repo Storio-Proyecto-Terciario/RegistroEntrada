@@ -2,7 +2,7 @@
 <?php
 require_once("Vista/vista_registro_funcionario_modal.html");
 require_once("Vista/vista_registro_usuario_modal.html");
-
+require_once("Vista/vista_editar_contraseña_funcionario_modal.php");
 
 switch($menuTipo){
     case 1:
@@ -19,7 +19,7 @@ switch($menuTipo){
         </button>
         <div class="dropdown-content">
             <a href="#" onclick="mostrarXML('Controlador/tablasUsuarios.php');">Usuarios</a>
-            <a href="#" onclick="mostrarXML('Controlador/tablasAdministrativos.php');">Administraivo</a>
+            <a href="#" onclick="mostrarXML('Controlador/tablasAdministrativos.php');">Administrativo</a>
         </div>
     </div>
     <div class="dropdown">
@@ -37,7 +37,7 @@ switch($menuTipo){
         </button>
         <div class="dropdown-content">
             <a href="Controlador/cerrar.php" >Cerrar</a>
-            <a href="#" onclick="abrirModal('modalRegFun',true)" >Administraivo</a>
+            <a href="#" onclick="abrirModal('editarFun',true)" >Administrativo</a>
         </div>
     </div>
 

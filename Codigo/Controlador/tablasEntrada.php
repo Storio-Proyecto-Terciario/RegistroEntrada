@@ -146,7 +146,7 @@ if (isset($_GET['buscarOpcion'])) {
     if ( $invitado == 'si') {
         $invitado2 = true;
         $url = $url . "&invitado=si";
-        switch ($_opcion) {
+        switch ($opcion) {
             case 1:
                 $url = $url . "&buscarOpcion=1&valor=$que";
 
@@ -165,7 +165,7 @@ if (isset($_GET['buscarOpcion'])) {
     }else{
         $url = $url . "&invitado=no";
         $invitado2 = false;
-        switch ($_opcion) {
+        switch ($opcion) {
             case 1:
                 $url = $url . "&buscarOpcion=1&valor=$que";
                 echo "Buscar por cedula, cualquiera que coincida con: $que  <br>";

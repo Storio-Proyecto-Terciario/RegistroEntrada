@@ -1,5 +1,8 @@
 CREATE DEFINER=`root`@`localhost` TRIGGER `actualizar_administrativos` AFTER UPDATE ON `usuarios` FOR EACH ROW BEGIN
-    UPDATE administrativos
-    SET AdministrativoExiste = NEW.UsuarioExiste
-    WHERE UsuarioCI = NEW.UsuarioCI;
+    if new.UsuarioExiste =0 then
+        UPDATE administrativos
+        SET AdministrativoExiste = 0
+        WHERE UsuarioCI = NEW.UsuarioCI;
+    end if;
+  
 END

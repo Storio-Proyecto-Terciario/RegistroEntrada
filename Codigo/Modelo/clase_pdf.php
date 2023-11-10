@@ -18,7 +18,7 @@ class PDF extends FPDF
     {
         $this->Cell($w[0],6,$row['UsuarioRegistroCI'],'LR');
         $this->Cell($w[1],6,$row['RegistroDesc'],'LR');
-        $this->Cell($w[3],6,$row['RealizaDia'],'LR');
+        $this->Cell($w[2],6,$row['RealizaDia'],'LR');
         $this->Cell($w[3],6,$row['RealizaHora'],'LR');
         $this->Ln();
     }
@@ -30,7 +30,7 @@ class PDF extends FPDF
 function PdfTablaEntradaUsuario($header, $data)
 {
     // Anchuras de las columnas
-    $w = array(40, 35, 45, 40);
+    $w = array(40, 35, 45, 40, 40, 40);
     // Cabeceras
     for($i=0;$i<count($header);$i++)
         $this->Cell($w[$i],7,$header[$i],1,0,'C');
@@ -42,8 +42,8 @@ function PdfTablaEntradaUsuario($header, $data)
         $this->Cell($w[1],6,$row['UsuarioNombre'],'LR');
         $this->Cell($w[2],6,$row['UsuarioApellido'],'LR');
         $this->Cell($w[3],6,$row['UsuarioTipo'],'LR');
-        $this->Cell($w[3],6,$row['RealizaDia'],'LR');
-        $this->Cell($w[3],6,$row['RealizaHora'],'LR');
+        $this->Cell($w[4],6,$row['RealizaDia'],'LR');
+        $this->Cell($w[5],6,$row['RealizaHora'],'LR');
         $this->Ln();
     }
     // Línea de cierre

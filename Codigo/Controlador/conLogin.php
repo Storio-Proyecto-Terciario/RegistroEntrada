@@ -4,8 +4,7 @@ require_once('../Modelo/clase_administrativos.php');
 require_once('../Modelo/clase_registro.php');
 session_start();
 
-
-if (empty($_POST['t'] and empty($_POST['cedula']))) {
+if (empty($_POST['t']) and empty($_POST['cedula'])) {
     header('location:../index.php');
 }
 $ci = $_POST['cedula'];
@@ -26,6 +25,7 @@ switch ($tipo) {
         header('location:../index.php?login=1');
         break;
     case 1:
+
         if (empty($_POST['con'])) {
             header('location:../index.php');
         }

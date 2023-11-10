@@ -32,7 +32,7 @@
                 $pdf->Output();
             break;
             case 3:
-                $header = array('Cedula de Identidad', 'Nombre', 'Apellido', 'Tipo', 'Descripcion', 'Fecha', 'Hora');
+                $header = array('Cedula de Identidad', 'Nombre', 'Apellido', 'Tipo', 'Fecha', 'Hora');
                 $pdf = new PDF();
                 $pdf->SetFont('Arial','',14);
                 $pdf->AddPage();
