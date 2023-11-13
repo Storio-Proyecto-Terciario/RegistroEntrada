@@ -37,7 +37,7 @@ switch($menuTipo){
         </button>
         <div class="dropdown-content">
             <a href="Controlador/cerrar.php" >Cerrar</a>
-            <a href="#" onclick="abrirModal('editarFun',true)" >Administrativo</a>
+            <a href="#" onclick="abrirModal('editarFun',true)" >Contraseña</a>
         </div>
     </div>
 

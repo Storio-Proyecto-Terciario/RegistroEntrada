@@ -2,7 +2,7 @@
 
 <div id="modalRegFun" class="modal">
     <span onclick="abrirModal('modalRegFun',false)" class="close" title="Cerrar modal">&times;</span>
-    <form class="modal-content" method="post" action="Controlador/registro.php">
+    <form  class="modal-content" onsubmit="return validarPassword('con')" method="post" action="Controlador/registro.php">
       <div class="container">
         <h1>Registrar funcionario</h1>
         <p>Registro de nuevos funcionario al sistema.</p>

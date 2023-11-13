@@ -58,24 +58,5 @@ switch ($val) {
 
 
         break;
-    case 3:
-        $administrador = new administrativos();
-        $contra1 = $_POST['con1'];
-        $contra2 = $_POST['con2'];
-        if($contra1 == '***'){
-            $msg = "<h2>No se pudo realizar el cambio</h2>";
-            $_SESSION['mensaje'] = $msg;
-            header('location:../menu.php');
-        }
-        
-        if ($administrador->modificarAdministrativoContra($_SESSION['ci'], $contra1, $contra2)) {
-            $msg = "<h2>Cambio realizado</h2>";
-            $_SESSION['mensaje'] = $msg;
-            header('location:../menu.php');
-        } else {
-            $msg = "<h2>No se pudo realizar el cambio</h2>";
-            $_SESSION['mensaje'] = $msg;
-            header('location:../menu.php');
-        }
-        break;
+
 }

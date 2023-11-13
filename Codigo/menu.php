@@ -56,26 +56,19 @@ $menuTipo = 1;
             xml.open("GET", url, true);
             xml.send();
         }
-        function validateForm() {
-    var password1 = document.getElementById("con1").value;
-    var password2 = document.getElementById("con2").value;
-    if (password1 != password2) {
-        alert("Las contraseñas no coinciden.");
-        return false;
-    }
-    return true;
-}
+ 
+    
     </script>
 
 
 
 
     <!-- <script src="Vista/Js/xml.js"></script> -->
-    <script src="Vista/Js/modal_registro.js"></script>
-    <script src="Vista/Js/validar.js"></script>
-    <script src="Vista/Js/restricciones_form.js"></script>
-    <script src="Vista/Js/navegador.js"></script>
-    <script src="Vista/Js/opcion.js"></script>
+    <script type="text/javascript" src="Vista/Js/modal_registro.js"></script>
+    <script type="text/javascript" src="Vista/Js/validar.js"></script>
+    <script type="text/javascript" src="Vista/Js/restricciones_form.js"></script>
+    <script type="text/javascript" src="Vista/Js/navegador.js"></script>
+    <script type="text/javascript" src="Vista/Js/opcion.js"></script>
 
 
 </body>

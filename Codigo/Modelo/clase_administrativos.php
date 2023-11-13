@@ -66,6 +66,7 @@ class administrativos extends usuarios
 
         $con = md5($con);
         $sql = "SELECT UsuarioCI FROM Administrativos WHERE UsuarioCI =$ci and AdministrativoContra='$con' and AdministrativoExiste=1;"; //exec ValidarAdministrativo @id =$ci;
+
         if ($resultado = $this->db->query($sql)) {
             // Cuenta el numero de filas que dio la consulta.
             $nfilas = mysqli_num_rows($resultado);
@@ -137,15 +138,14 @@ class administrativos extends usuarios
     }
 
     public function modificarAdministrativoContra($ci, $contra1, $contra2){
-        echo $contra1;
 
         if($contra1==$contra2){
-            echo $contra1;
-            exit;
+            
             $contra1 = md5($contra1);
             $sql = "UPDATE Administrativos SET AdministrativoContra='$contra1' WHERE UsuarioCI=$ci;";
-            if ($resultado = $this->db->query($sql)) {
-                $resultado->free();
+            
+            if ($this->db->query($sql)) {
+               
                 return true;
             } else {
                 die('Error SQL: ' . $this->db->error);

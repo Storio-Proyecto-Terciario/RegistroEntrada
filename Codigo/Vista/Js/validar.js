@@ -14,10 +14,6 @@ function tiene_numeros_key(id) {
     }
 }
 
-
-
-
-
 // Valida si el valor es 100% numerico
 function validarNumerico(id) {
     let elemento = document.getElementById(id);
@@ -31,23 +27,20 @@ function validarNumerico(id) {
     }
 }
 
+function validarPassword(id) {
+    var password = document.getElementById(id).value;
+    var lowerCasePattern = /[a-z]/;
+    var upperCasePattern = /[A-Z]/;
+    var numberPattern = /[0-9]/;
 
-
-
-
-
-
-
-
-
+    if (!lowerCasePattern.test(password) || !upperCasePattern.test(password) || !numberPattern.test(password)) {
+        alert('La contraseña debe contener al menos un carácter en minúscula, uno en mayúscula y un número.');
+        return false;
+    }
+}
 
 
 /*************************************************************************/
-
-
-
-
-
 
 
 // Valida si un strin tiene numeros y signos.

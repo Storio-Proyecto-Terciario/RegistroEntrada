@@ -5,7 +5,7 @@ require_once('../Modelo/clase_registro.php');
 session_start();
 
 if (empty($_POST['t']) and empty($_POST['cedula'])) {
-    header('location:../index.php');
+    echo "error con los datos <a href='index.php'>regresa</a>";
 }
 $ci = $_POST['cedula'];
 $tipo = $_POST['t'];
@@ -27,7 +27,8 @@ switch ($tipo) {
     case 1:
 
         if (empty($_POST['con'])) {
-            header('location:../index.php');
+            echo "error con los datos <a href='../index.php'>regresa</a>";
+            //header('location:../index.php');
         }
         if ($usuario->validarUsuario($ci)) {
             $administrativo = new administrativos();
@@ -45,11 +46,12 @@ switch ($tipo) {
 
                 header('location:../menu.php');
             } else {
-
-                header('location:../index.php');
+                echo "error con los datos ad <a href='../index.php'>regresa</a>";
+                //header('location:../index.php');
             }
         } else {
-            header('location:../index.php');
+            echo "error con los datos usu <a href='../index.php'>regresa</a>";
+           // header('location:../index.php');
         }
 
         break;

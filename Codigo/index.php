@@ -24,7 +24,8 @@ if(isset($_GET['login'])){
     require_once('Vista/vista_login.html');
 }
 
-
     ?>
+ <script type="text/javascript" src="Vista/Js/validar.js"></script>
+
 </body>
 </html>
