@@ -10,8 +10,8 @@
 
         <label for="ci"><b>Cedula</b></label>
 
-        <input type="text" name="cedula" id="ci" min="0" class="formInput" onkeydown="desabilitarFlechas('ci')"
-          onkeyup="validarNumerico('ci');" onscroll="noScroll('ci')" maxlength="8" required>
+        <input type="text" name="cedula" id="regfunci" min="0" class="formInput" onkeydown="desabilitarFlechas('regfunci')"
+          onkeyup="validarNumerico('regfunci');" onscroll="noScroll('regfunci')" maxlength="8" required>
 
         <label for="con"><b>Contraseña</b></label>
         <input type="password" name="contraseña" id="con" class="formInput"  required>
@@ -19,6 +19,11 @@
         <label for="co"><b>Correo</b></label>
         <input type="email" name="correo" id="co" class="formInput" required>
 
+        <label for="permiso"><b>Tipo</b></label>
+        <select name="permiso" id="permiso" class="formInput">
+            <option value="1">Invitado</option>
+            <option value="0">Completo</option>
+        </select>
  
         <input type="hidden" name="re" value="2">
         

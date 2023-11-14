@@ -117,10 +117,10 @@ class administrativos extends usuarios
 
     //insertar administrativa
 
-    public function altaAdministrativo($ci, $contra, $con, $jefe)
+    public function altaAdministrativo($ci, $contra, $con, $jefe, $p)
     {
         $contra = md5($contra);
-        
+
         // Valida si el admistrativo ya existe
         $sql = "SELECT UsuarioCi FROM Administrativos WHERE UsuarioCi =$ci and AdministrativoContra='$contra' and AdministrativoExiste=1";
         if ($resultado = $this->db->query($sql)) {
@@ -128,11 +128,21 @@ class administrativos extends usuarios
             $resultado->free();
 
             if ($nfilas == 0) {
-                $sql = "CALL proc_InsertarAdministrativoSupervisa($ci, '$contra', '$con', $jefe);";
+                $sql = "CALL proc_InsertarAdministrativoSupervisa($ci, '$contra', '$con', $jefe, $p);";
     
-                $this->db->query($sql);
+               if( $this->db->query($sql)){
+                    return true;
+               }else{
+                echo "Error: " . $sql . "<br>" . $this->db->error;
+                exit;
+                    return false;
+               }
+            }else{
+                return false;
             }
         } else {
+            echo "Error: " . $sql . "<br>" . $this->db->error;
+            exit;
             die('Error SQL: ' . $this->db->error);
         }
     }

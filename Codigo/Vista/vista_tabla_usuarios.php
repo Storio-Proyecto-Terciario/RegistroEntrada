@@ -30,7 +30,9 @@ function mostrarTablaUsu($usuarios, $total_paginas, $pagina_actual, $urls)
   echo "<th>Nombre</th>";
   echo "<th>Apellido</th>";
   echo "<th>Tipo</th>";
+  if($_SESSION['permiso'] == 0){
   echo "<th>Eliminar</th>";
+  }
   echo "</tr>";
   foreach ($usuarios as $usuario) {
     echo "<tr>";
@@ -38,7 +40,10 @@ function mostrarTablaUsu($usuarios, $total_paginas, $pagina_actual, $urls)
     echo "<td>" . $usuario['UsuarioNombre'] . "</td>";
     echo "<td>" . $usuario['UsuarioApellido'] . "</td>";
     echo "<td>" . $usuario['UsuarioTipo'] . "</td>";
-    echo "<td><a onclick=\"mostrarXML('Controlador/tablasUsuarios.php?index=" . $pagina_actual . "&borrar=" . $usuario['UsuarioCI'] . "')\">X</a></td>";
+    if($_SESSION['permiso'] == 0){
+      echo "<td><a onclick=\"mostrarXML('Controlador/tablasUsuarios.php?index=" . $pagina_actual . "&borrar=" . $usuario['UsuarioCI'] . "')\">X</a></td>";
+
+    }
 
     echo "</tr>";
   }

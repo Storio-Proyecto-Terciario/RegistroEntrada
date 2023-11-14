@@ -9,9 +9,14 @@ $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $contacto = $_SESSION['contacto'];
 $jefe = $_SESSION['jefe'];
+$permiso = $_SESSION['permiso'];
 $usuario = $nombre . " " . $apellido;
+if ($permiso != 0) {
+    $menuTipo = 2;
+} else {
+    $menuTipo = 1;
+}
 
-$menuTipo = 1;
 ?>
 
 <!DOCTYPE html>

@@ -41,8 +41,11 @@ switch ($tipo) {
                 $_SESSION['contacto'] = $datos['AdministrativoJefe'];
                 $_SESSION['jefe'] = $datos['AdministrativoJefe'];
                 $_SESSION['tipo'] = $datos['UsuarioTipo'];
+                $_SESSION['permiso'] = $datos['AdministrativoPermisos']; 
                 $msg = "Inicio de sesion correcto";
                 $_SESSION['mensaje'] = $msg;
+
+               
 
                 header('location:../menu.php');
             } else {
