@@ -6,6 +6,7 @@ session_start();
 
 if (empty($_POST['t']) and empty($_POST['cedula'])) {
     echo "error con los datos <a href='index.php'>regresa</a>";
+    header('location:../index.php');
 }
 $ci = $_POST['cedula'];
 $tipo = $_POST['t'];
@@ -22,13 +23,13 @@ switch ($tipo) {
             $des = "Usuario no registrado cedula: " . $ci;
         }
         $re->masRegistro($ci, $des);
-        header('location:../index.php?login=1');
+        header('location:../entrada.php');
         break;
     case 1:
 
         if (empty($_POST['con'])) {
             echo "error con los datos <a href='../index.php'>regresa</a>";
-            //header('location:../index.php');
+            header('location:../index.php');
         }
         if ($usuario->validarUsuario($ci)) {
             $administrativo = new administrativos();
@@ -49,12 +50,12 @@ switch ($tipo) {
 
                 header('location:../menu.php');
             } else {
-                echo "error con los datos ad <a href='../index.php'>regresa</a>";
-                //header('location:../index.php');
+                echo "<script>console.log('error con los datos ad ')</script>";
+                header('location:../index.php');
             }
         } else {
             echo "error con los datos usu <a href='../index.php'>regresa</a>";
-           // header('location:../index.php');
+            header('location:../index.php');
         }
 
         break;

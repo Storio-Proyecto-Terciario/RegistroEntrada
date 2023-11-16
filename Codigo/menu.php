@@ -24,7 +24,7 @@ if ($permiso != 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestion de entrada</title>
     <link rel="stylesheet" href="Vista/Css/modal_registro.css">
     <link rel="stylesheet" href="Vista/Css/botones.css">
     <link rel="stylesheet" href="Vista/Css/formulario_1.css">

@@ -4,9 +4,9 @@ require_once("Vista/vista_registro_funcionario_modal.html");
 require_once("Vista/vista_registro_usuario_modal.html");
 require_once("Vista/vista_editar_contraseña_funcionario_modal.php");
 
-switch($menuTipo){
+switch ($menuTipo) {
     case 1:
-        ?>
+?>
         <nav class="topnav" id="myTopnav">
             <a href="#menu.php" class="active">Home</a>
             <a href="#" onclick="mostrarXML('Controlador/tablasEntrada.php');">Entrada</a>
@@ -24,8 +24,8 @@ switch($menuTipo){
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#" onclick="abrirModal('modalRegUsu',true)" >Usuarios</a>
-                    <a href="#" onclick="abrirModal('modalRegFun',true)" >Administrativo</a>
+                    <a href="#" onclick="abrirModal('modalRegUsu',true)">Usuarios</a>
+                    <a href="#" onclick="abrirModal('modalRegFun',true)">Administrativo</a>
                 </div>
             </div>
             <div class="dropdown">
@@ -33,90 +33,101 @@ switch($menuTipo){
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="Controlador/cerrar.php" >Cerrar</a>
-                    <a href="#" onclick="abrirModal('editarFun',true)" >Contraseña</a>
+                    <a href="Controlador/cerrar.php">Cerrar</a>
+                    <a href="#" onclick="abrirModal('editarFun',true)">Contraseña</a>
                 </div>
             </div>
 
-   <!-- Nuevo Dropdown para Vistas -->
-   <div class="dropdown">
-        <button class="dropbtn">Vistas
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="menuVistas">
-            <a value="normal">Vista Normal</a>
-            <a value="daltonism">Vista Daltonismo</a>
-            <a value="bw">Blanco y Negro</a>
-        </div>
-    </div>
+            <!-- Nuevo Dropdown para Vistas -->
+            <div class="dropdown">
+                <button class="dropbtn">Vistas
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="menuVistas">
+                    <a value="normal">Vista Normal</a>
+                    <a value="daltonism">Vista Daltonismo</a>
+                    <a value="bw">Blanco y Negro</a>
+                </div>
+            </div>
 
-    <!-- Startea el script y una variable -->
+            <!-- Startea el script y una variable -->
 
-        
+
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navResponsive()">&#9776;</a>
         </nav>
-        
-            <?php
+
+    <?php
         break;
     case 2:
     ?>
-<nav class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
-    <a href="#" onclick="mostrarXML('Controlador/tablasEntrada.php');">Entrada</a>
-    <div class="dropdown">
-        <button class="dropbtn">Listas
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="#" onclick="mostrarXML('Controlador/tablasUsuarios.php');">Usuarios</a>
-            <a href="#" onclick="mostrarXML('Controlador/tablasAdministrativos.php');">Administrativo</a>
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn"><?php echo $usuario ?>
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="Controlador/cerrar.php" >Cerrar</a>
-            <a href="#" onclick="abrirModal('editarFun',true)" >Contraseña</a>
-        </div>
-    </div>
+        <nav class="topnav" id="myTopnav">
+            <a href="#home" class="active">Home</a>
+            <a href="#" onclick="mostrarXML('Controlador/tablasEntrada.php');">Entrada</a>
+            <div class="dropdown">
+                <button class="dropbtn">Listas
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="mostrarXML('Controlador/tablasUsuarios.php');">Usuarios</a>
+                    <a href="#" onclick="mostrarXML('Controlador/tablasAdministrativos.php');">Administrativo</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn"><?php echo $usuario ?>
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="Controlador/cerrar.php">Cerrar</a>
+                    <a href="#" onclick="abrirModal('editarFun',true)">Contraseña</a>
+                </div>
+            </div>
+            <!-- Nuevo Dropdown para Vistas -->
+            <div class="dropdown">
+                <button class="dropbtn">Vistas
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="menuVistas">
+                    <a value="normal">Vista Normal</a>
+                    <a value="daltonism">Vista Daltonismo</a>
+                    <a value="bw">Blanco y Negro</a>
+                </div>
+            </div>
 
-    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navResponsive()">&#9776;</a>
-</nav>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navResponsive()">&#9776;</a>
+        </nav>
 
     <?php
-    break;
+        break;
     default:
     ?>
 
-<nav class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
-    <a href="#retrada">Entrada</a>
-    <div class="dropdown">
-        <button class="dropbtn">Listas
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="index.php" onclick="">Usuarios</a>
-            <a href="index.php" onclick="">Administraivo</a>
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">Registro
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="index.php" onclick="" >Usuarios</a>
-            <a href="index.php" onclick="" >Administraivo</a>
-        </div>
-    </div>
-    <a href="#about" class="usuario">usuario</a>
-    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navResponsive()">&#9776;</a>
-</nav>
+        <nav class="topnav" id="myTopnav">
+            <a href="#home" class="active">Home</a>
+            <a href="#retrada">Entrada</a>
+            <div class="dropdown">
+                <button class="dropbtn">Listas
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="index.php" onclick="">Usuarios</a>
+                    <a href="index.php" onclick="">Administraivo</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Registro
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="index.php" onclick="">Usuarios</a>
+                    <a href="index.php" onclick="">Administraivo</a>
+                </div>
+            </div>
+            <a href="#about" class="usuario">usuario</a>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navResponsive()">&#9776;</a>
+        </nav>
 
-    <?php
-    break;
+<?php
+        break;
 }
 
 

@@ -12,7 +12,7 @@
 <?php
 
 
-        require_once('Vista/vista_login.html');
+        require_once('Vista/vista_entrada.html');
 
     ?>
 <script type="text/javascript" src="Vista/Js/validar.js"></script>
