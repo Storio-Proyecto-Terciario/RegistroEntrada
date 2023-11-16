@@ -8,7 +8,7 @@ switch($menuTipo){
     case 1:
         ?>
         <nav class="topnav" id="myTopnav">
-            <a href="#home" class="active">Home</a>
+            <a href="#menu.php" class="active">Home</a>
             <a href="#" onclick="mostrarXML('Controlador/tablasEntrada.php');">Entrada</a>
             <div class="dropdown">
                 <button class="dropbtn">Listas
@@ -37,6 +37,21 @@ switch($menuTipo){
                     <a href="#" onclick="abrirModal('editarFun',true)" >Contraseña</a>
                 </div>
             </div>
+
+   <!-- Nuevo Dropdown para Vistas -->
+   <div class="dropdown">
+        <button class="dropbtn">Vistas
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="menuVistas">
+            <a value="normal">Vista Normal</a>
+            <a value="daltonism">Vista Daltonismo</a>
+            <a value="bw">Blanco y Negro</a>
+        </div>
+    </div>
+
+    <!-- Startea el script y una variable -->
+
         
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navResponsive()">&#9776;</a>
         </nav>

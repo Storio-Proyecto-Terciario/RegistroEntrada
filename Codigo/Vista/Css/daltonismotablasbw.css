@@ -1,0 +1,67 @@
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border-bottom: 1px solid #000000; /* Cambia el color del borde a negro */
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #000000; /* Cambia el color de fondo al pasar el mouse a negro */
+  color: #ffffff; /* Cambia el color del texto al pasar el mouse a blanco */
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #000000; /* Cambia el color de fondo de las celdas de encabezado a negro */
+  color: #ffffff; /* Cambia el color del texto del encabezado a blanco */
+}
+
+.icono {
+  width: 30px;
+}
+
+.catalogo ul {
+  list-style: none;
+  text-decoration: none;
+  color: #ffffff; /* Cambia el color del texto de la lista a blanco */
+}
+
+.catalogo .sigan {
+  display: inline;
+  background-color: #000000; /* Cambia el color de fondo del contenedor de lista a negro */
+  margin: 10px;
+  padding: 5px;
+  padding-bottom: 6px;
+  padding-top: 4px;
+}
+
+.catalogo .sigan a {
+  text-decoration: none;
+  color: #ffffff; /* Cambia el color del enlace de la lista a blanco */
+}
+
+.catalogo li {
+  display: inline;
+}
+
+.catalogo select {
+  background-color: #000000; /* Cambia el color de fondo del selector a negro */
+  color: #ffffff; /* Cambia el color del texto del selector a blanco */
+}
+
+/* Estilo para el modo daltonismo */
+.daltonism-mode {
+  background-color: #000000; /* Cambia el fondo de las tablas y listas en modo daltonismo a negro */
+  color: #ffffff; /* Cambia el color del texto de las tablas y listas en modo daltonismo a blanco */
+  /* Agrega cualquier otro estilo específico para el modo daltonismo */
+}

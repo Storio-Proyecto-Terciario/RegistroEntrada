@@ -1,0 +1,69 @@
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+    background-color: #ddd;
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #336699; /* Cambia el color de fondo de las celdas de encabezado a azul */
+    color: white;
+}
+
+.icono {
+    width: 30px;
+}
+
+.catalogo ul {
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+
+.catalogo .sigan {
+    display: inline;
+    background-color: #336699;
+    margin: 10px;
+    padding: 5px;
+    padding-bottom: 6px;
+    padding-top: 4px;
+}
+
+.catalogo .sigan a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.catalogo li {
+    display: inline;
+}
+
+.catalogo select {
+    background-color: #336699;
+    color: #ffffff;
+    border: none;
+    padding: 5px;
+    margin: 10px;
+}
+
+/* Estilo para el modo daltonismo */
+.daltonism-mode {
+    background-color: #FFFFFF; /* Cambia el fondo de las tablas y listas en modo daltonismo */
+    color: #000000; /* Cambia el color del texto de las tablas y listas en modo daltonismo */
+    /* Agrega cualquier otro estilo específico para el modo daltonismo */
+}
